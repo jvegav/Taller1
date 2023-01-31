@@ -10,7 +10,6 @@ import java.util.Map;
 
 import uniandes.dpoo.taller0.modelo.Atleta;
 import uniandes.dpoo.taller0.modelo.Genero;
-import uniandes.dpoo.taller0.modelo.Pais;
 import uniandes.dpoo.taller0.procesamiento.CalculadoraEstadisticas;
 import uniandes.dpoo.taller0.procesamiento.LoaderOlimpicos;
 
@@ -64,7 +63,7 @@ public class ConsolaOlimpicos
 				else if (opcion_seleccionada == 12 && calculadora != null)
 					ejecutarPorcentajeMedallistas();
 				else if (opcion_seleccionada == 13 && calculadora != null)
-					ejecutarPaisDeAtleta();
+					ejecutarPaisDelAtleta();
 				else if (opcion_seleccionada == 14)
 				{
 					System.out.println("Saliendo de la aplicación ...");
@@ -105,26 +104,26 @@ public class ConsolaOlimpicos
 		System.out.println("10. Consultar el atleta todoterreno");
 		System.out.println("11. Consultar los medallistas por país y género");
 		System.out.println("12. Consultar el porcentaje de atletas que son medallistas");
-		System.out.println("13. Consultar el pais de un atleta determinado");
-		System.out.println("14. Salir de la aplicación\n");
+		System.out.println("13. Salir de la aplicación\n");
 	}
 	
+	/**
+	 * MODIFICACION
+	 * Segun un nombre de atleta ingresado, le muestra al usuario el pais de este atleta.
+	 */
 	
-	private void ejecutarPaisDeAtleta()
-		
+	private void ejecutarPaisDelAtleta()
 	{
-		String nombreAtleta =input("Ingrese el nombre del atleta a buscar") ;
-		boolean confirmacion  = calculadora.isAtleta(nombreAtleta);
-		if(confirmacion == false) {
-			System.out.println("No existe el nombre del atleta ingresado por favor intente con otro.");;
+		String nombreAtleta = input("Por favor ingrese el nombre del atleta");
+		boolean isAtleta = calculadora.isAtleta(nombreAtleta);
+		if(isAtleta == false) {
+			System.out.println("El nombre que se ingreso no corresponde a ningun atleta en el sistema");
 		}
 		else {
-			 String pais = calculadora.paisDelAtleta(nombreAtleta);
-			 System.out.println("El pais de origen de " + nombreAtleta + " es " + pais);
+			String pais = calculadora.paisDelAtleta(nombreAtleta);
+			System.out.println("El pais del atleta de nombre: " + nombreAtleta + " es " + pais);
 		}
-		
 	}
-
 	/**
 	 * Le muestra el usuario el porcentaje de atletas que son medallistas
 	 */

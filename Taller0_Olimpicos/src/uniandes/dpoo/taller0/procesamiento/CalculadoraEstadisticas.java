@@ -66,7 +66,44 @@ public class CalculadoraEstadisticas
 	// ************************************************************************
 	// Métodos
 	// ************************************************************************
-
+	
+	
+	
+	/**
+	 * Calcula cual es el pais de un atleta ingresado
+	 * 
+	 * @param Nombre del atleta
+	 * @return Un String con el nombre del pais del atleta
+	 */
+	public String paisDelAtleta(String nombredelAtleta) {
+		Atleta elAtleta = buscarAtleta(nombredelAtleta);
+		Pais pais = elAtleta.darPais();
+		return pais.darNombre();
+	}
+	
+	
+	/**
+	 * Confirma si el atleta se encuentra en el sistema 
+	 * 
+	 * @param nombre del Atleta (String)
+	 * @return Un boolean con el valor false si el atleta no esta en el sistema,
+	 * y true si el atleta si esta en el sitema
+	 */
+	
+	public boolean isAtleta(String nombredelAtleta) {
+		Atleta isAtleta = buscarAtleta(nombredelAtleta);
+		boolean res = true;
+		if(isAtleta == null) {
+			res = false;
+		}
+		return res;
+	}
+	
+	
+	
+	
+	
+	
 	/**
 	 * Calcula cuáles fueron los atletas que participaron en cada evento para el año
 	 * indicado
@@ -89,26 +126,6 @@ public class CalculadoraEstadisticas
 		}
 
 		return resultado;
-	}
-	
-	/**
-	 * Calcula cual es el pais segun un atleta introducido
-	 * Param : Nombre del atleta
-	 */
-	
-	public String paisDelAtleta(String nombreAtleta) {
-		Atleta atleta = buscarAtleta(nombreAtleta);
-		Pais pais = atleta.darPais();
-		return pais.darNombre();
-	}
-	
-	public boolean isAtleta(String nombreAtleta) {
-		Atleta isInIt = buscarAtleta(nombreAtleta);
-		boolean res = true ;
-		if(isInIt == null) {
-			res = false;
-		}
-		return res;
 	}
 
 	/**
